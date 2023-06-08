@@ -1,0 +1,3 @@
+[submodule "chomusuke"]
+	path = chomusuke
+	url = https://github.com/wasabi3D/chomusuke
