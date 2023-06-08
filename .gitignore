@@ -1,0 +1,16 @@
+.vscode/
+.vs/
+bin/
+Debug/
+lib/
+x64/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.o
+.DS_STORE
+compile_commands.json
+.cache/
+*.png~
+*.ini
