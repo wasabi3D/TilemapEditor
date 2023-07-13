@@ -14,20 +14,28 @@
 
 
 class InspectorArea {
+	bool renaming{ false };
+	bool _tmp_do_not_show_again{ false };
+	bool show_delete_warn{ true };
+	bool show_framerate{ false };
+	int deleting_layer{ -1 };
+
 public:
 	std::function<void()> on_add_layer;
-	std::function<void()> on_delete_layer;
+	std::function<void(int)> on_delete_layer;
 	std::function<void(int, int)> on_swap;
 	std::vector<std::string> layer_names;
 	std::map<int, Tilemap_visible> visible_layers;
+	ImGuiIO* io{ nullptr };
 	size_t selected = 0;
-	bool renaming = false;
+	int selected_brush{ 0 };
 	InspectorArea() = default;
 
 	void addNewLayer();
 	void deleteLayer();
-	void drawToTexture();
+	void drawToTexture(int view_w, int view_h);
 	bool swap(int a, int b);
+	bool allowControl(){ return !(renaming || (deleting_layer != -1)); }
 };
 
 SDL_Texture* draw_inspector_area_texture(
